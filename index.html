@@ -1,0 +1,1144 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>German Auto Studio — Sales & Specialist Servicing</title>
+  <meta name="description" content="A black & grey aesthetic website template for German car sales and specialist servicing." />
+  <style>
+    /* =========================
+       BLACK / GREY AESTHETIC THEME
+       ========================= */
+    :root{
+      --bg: #0b0c0f;
+      --panel: rgba(255,255,255,.04);
+      --panel-2: rgba(255,255,255,.06);
+      --border: rgba(255,255,255,.10);
+      --text: rgba(255,255,255,.86);
+      --muted: rgba(255,255,255,.62);
+      --dim: rgba(255,255,255,.45);
+      --accent: #d7d7d7; /* keep neutral, “German” clean */
+      --accent-2: #9a9a9a;
+      --shadow: 0 18px 60px rgba(0,0,0,.55);
+      --radius: 20px;
+      --radius-sm: 14px;
+      --max: 1180px;
+      --ring: 0 0 0 3px rgba(255,255,255,.10);
+    }
+
+    *{ box-sizing: border-box; }
+    html, body { height: 100%; }
+    body{
+      margin: 0;
+      font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji","Segoe UI Emoji";
+      color: var(--text);
+      background:
+        radial-gradient(1200px 700px at 15% -10%, rgba(255,255,255,.10), transparent 55%),
+        radial-gradient(900px 600px at 85% 0%, rgba(255,255,255,.06), transparent 60%),
+        radial-gradient(900px 600px at 60% 110%, rgba(255,255,255,.05), transparent 60%),
+        linear-gradient(180deg, #07080a 0%, #0b0c0f 40%, #07080a 100%);
+      overflow-x: hidden;
+    }
+
+    a{ color: inherit; text-decoration: none; }
+    img{ max-width: 100%; display: block; }
+    .container{ width: min(var(--max), calc(100% - 40px)); margin: 0 auto; }
+
+    /* Subtle “carbon” grain */
+    .grain::before{
+      content:"";
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      opacity: .07;
+      mix-blend-mode: overlay;
+      background-image:
+        url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='180' height='180' filter='url(%23n)' opacity='.55'/%3E%3C/svg%3E");
+      background-size: 180px 180px;
+    }
+
+    /* Header */
+    header{
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      backdrop-filter: blur(12px);
+      background: rgba(10, 11, 14, .55);
+      border-bottom: 1px solid rgba(255,255,255,.07);
+    }
+    .nav{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap: 14px;
+      padding: 14px 0;
+    }
+
+    .brand{
+      display:flex;
+      align-items:center;
+      gap: 12px;
+      letter-spacing: .6px;
+    }
+    .logo{
+      width: 38px; height: 38px;
+      border-radius: 14px;
+      background: linear-gradient(145deg, rgba(255,255,255,.13), rgba(255,255,255,.04));
+      border: 1px solid rgba(255,255,255,.12);
+      box-shadow: var(--shadow);
+      display:grid; place-items:center;
+    }
+    .logo svg{ opacity: .9; }
+    .brand-title{
+      display:flex; flex-direction: column; line-height: 1.1;
+    }
+    .brand-title strong{ font-size: 14px; font-weight: 700; }
+    .brand-title span{ font-size: 12px; color: var(--muted); }
+
+    .nav-links{
+      display:flex;
+      align-items:center;
+      gap: 18px;
+    }
+    .nav-links a{
+      font-size: 13px;
+      color: var(--muted);
+      padding: 10px 10px;
+      border-radius: 12px;
+      transition: .18s ease;
+    }
+    .nav-links a:hover{ color: var(--text); background: rgba(255,255,255,.06); }
+    .nav-cta{ display:flex; align-items:center; gap: 10px; }
+
+    .btn{
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      gap: 10px;
+      padding: 11px 14px;
+      border-radius: 14px;
+      font-size: 13px;
+      font-weight: 600;
+      letter-spacing: .2px;
+      border: 1px solid rgba(255,255,255,.12);
+      background: linear-gradient(180deg, rgba(255,255,255,.10), rgba(255,255,255,.04));
+      box-shadow: 0 10px 30px rgba(0,0,0,.35);
+      transition: .18s ease;
+      cursor: pointer;
+    }
+    .btn:hover{ transform: translateY(-1px); border-color: rgba(255,255,255,.18); }
+    .btn:focus{ outline: none; box-shadow: var(--shadow), var(--ring); }
+
+    .btn-ghost{
+      background: transparent;
+      box-shadow: none;
+    }
+    .btn-ghost:hover{ background: rgba(255,255,255,.06); }
+
+    .burger{
+      display:none;
+      width: 42px; height: 42px;
+      border-radius: 14px;
+      border: 1px solid rgba(255,255,255,.12);
+      background: rgba(255,255,255,.06);
+      cursor:pointer;
+    }
+
+    /* Hero */
+    .hero{
+      position: relative;
+      padding: 54px 0 26px;
+    }
+
+    .hero-grid{
+      display:grid;
+      grid-template-columns: 1.25fr .75fr;
+      gap: 26px;
+      align-items: start;
+    }
+
+    .kicker{
+      display:inline-flex;
+      align-items:center;
+      gap: 10px;
+      padding: 8px 12px;
+      border-radius: 999px;
+      background: rgba(255,255,255,.06);
+      border: 1px solid rgba(255,255,255,.10);
+      color: var(--muted);
+      font-size: 12px;
+    }
+    .kicker .dot{
+      width: 8px; height: 8px; border-radius: 50%;
+      background: rgba(255,255,255,.75);
+      box-shadow: 0 0 0 4px rgba(255,255,255,.08);
+    }
+
+    h1{
+      margin: 14px 0 10px;
+      font-size: clamp(30px, 4.6vw, 54px);
+      line-height: 1.06;
+      letter-spacing: -0.8px;
+    }
+    .lead{
+      margin: 0;
+      color: var(--muted);
+      font-size: 15px;
+      line-height: 1.6;
+      max-width: 58ch;
+    }
+
+    .hero-actions{
+      margin-top: 18px;
+      display:flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      align-items:center;
+    }
+
+    .stats{
+      margin-top: 18px;
+      display:grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 12px;
+      max-width: 640px;
+    }
+    .stat{
+      padding: 14px;
+      border-radius: var(--radius);
+      background: rgba(255,255,255,.04);
+      border: 1px solid rgba(255,255,255,.08);
+    }
+    .stat strong{ display:block; font-size: 16px; }
+    .stat span{ display:block; font-size: 12px; color: var(--muted); margin-top: 4px; }
+
+    .hero-card{
+      border-radius: var(--radius);
+      background: linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,.03));
+      border: 1px solid rgba(255,255,255,.10);
+      box-shadow: var(--shadow);
+      overflow:hidden;
+    }
+    .hero-card .top{
+      padding: 16px 16px 12px;
+      display:flex;
+      justify-content: space-between;
+      align-items: center;
+      border-bottom: 1px solid rgba(255,255,255,.08);
+    }
+    .hero-card .top strong{ font-size: 13px; }
+    .pill{
+      font-size: 12px;
+      color: var(--muted);
+      padding: 7px 10px;
+      border-radius: 999px;
+      border: 1px solid rgba(255,255,255,.12);
+      background: rgba(255,255,255,.05);
+    }
+    .hero-card .body{
+      padding: 16px;
+      display:grid;
+      gap: 10px;
+    }
+
+    .mini{
+      display:flex;
+      gap: 12px;
+      align-items:flex-start;
+      padding: 12px;
+      border-radius: var(--radius-sm);
+      background: rgba(0,0,0,.18);
+      border: 1px solid rgba(255,255,255,.08);
+    }
+    .mini svg{ flex: 0 0 auto; opacity: .85; margin-top: 1px; }
+    .mini strong{ display:block; font-size: 13px; }
+    .mini span{ display:block; font-size: 12px; color: var(--muted); margin-top: 3px; }
+
+    .section{
+      padding: 42px 0;
+    }
+    .section-head{
+      display:flex;
+      align-items:flex-end;
+      justify-content:space-between;
+      gap: 16px;
+      margin-bottom: 18px;
+    }
+    .section h2{
+      margin: 0;
+      font-size: 22px;
+      letter-spacing: -.3px;
+    }
+    .section p.sub{
+      margin: 6px 0 0;
+      color: var(--muted);
+      font-size: 13px;
+      line-height: 1.6;
+    }
+
+    /* Inventory */
+    .filters{
+      display:flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      align-items:center;
+      justify-content: flex-end;
+    }
+    .input{
+      display:flex;
+      align-items:center;
+      gap: 10px;
+      padding: 10px 12px;
+      border-radius: 14px;
+      border: 1px solid rgba(255,255,255,.12);
+      background: rgba(255,255,255,.05);
+      min-width: 240px;
+    }
+    .input input{
+      width: 100%;
+      background: transparent;
+      border: 0;
+      outline: none;
+      color: var(--text);
+      font-size: 13px;
+    }
+    .chip-row{ display:flex; gap: 8px; flex-wrap: wrap; }
+    .chip{
+      padding: 9px 11px;
+      border-radius: 999px;
+      border: 1px solid rgba(255,255,255,.12);
+      background: rgba(255,255,255,.04);
+      color: var(--muted);
+      font-size: 12px;
+      cursor:pointer;
+      transition: .15s ease;
+      user-select: none;
+    }
+    .chip:hover{ color: var(--text); background: rgba(255,255,255,.07); }
+    .chip.active{ color: var(--text); border-color: rgba(255,255,255,.22); background: rgba(255,255,255,.08); }
+
+    .grid{
+      display:grid;
+      grid-template-columns: repeat(12, 1fr);
+      gap: 14px;
+    }
+    .car{
+      grid-column: span 4;
+      border-radius: var(--radius);
+      overflow:hidden;
+      border: 1px solid rgba(255,255,255,.10);
+      background: rgba(255,255,255,.04);
+      box-shadow: 0 12px 40px rgba(0,0,0,.35);
+      transition: .18s ease;
+    }
+    .car:hover{ transform: translateY(-2px); border-color: rgba(255,255,255,.18); }
+    .car-media{
+      height: 170px;
+      background:
+        radial-gradient(700px 250px at 50% 0%, rgba(255,255,255,.12), transparent 60%),
+        linear-gradient(120deg, rgba(255,255,255,.06), rgba(255,255,255,.02));
+      position: relative;
+    }
+    .car-media::after{
+      content:"";
+      position:absolute; inset: 0;
+      background:
+        linear-gradient(180deg, transparent 0%, rgba(0,0,0,.55) 100%);
+    }
+    .badge{
+      position:absolute;
+      top: 12px; left: 12px;
+      z-index: 2;
+      font-size: 11px;
+      padding: 7px 10px;
+      border-radius: 999px;
+      background: rgba(0,0,0,.40);
+      border: 1px solid rgba(255,255,255,.14);
+      color: rgba(255,255,255,.80);
+      backdrop-filter: blur(8px);
+    }
+    .price{
+      position:absolute;
+      bottom: 12px; left: 12px;
+      z-index: 2;
+      font-weight: 800;
+      letter-spacing: .2px;
+    }
+    .car-body{ padding: 14px; }
+    .car-title{
+      display:flex;
+      align-items:flex-start;
+      justify-content: space-between;
+      gap: 10px;
+    }
+    .car-title strong{ font-size: 14px; }
+    .car-title span{ font-size: 12px; color: var(--muted); }
+
+    .specs{
+      margin-top: 10px;
+      display:flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      color: var(--muted);
+      font-size: 12px;
+    }
+    .spec{
+      padding: 7px 9px;
+      border-radius: 999px;
+      border: 1px solid rgba(255,255,255,.10);
+      background: rgba(255,255,255,.03);
+    }
+    .car-actions{
+      margin-top: 12px;
+      display:flex;
+      gap: 10px;
+    }
+    .btn-sm{
+      padding: 10px 12px;
+      border-radius: 14px;
+      font-size: 12px;
+      flex: 1;
+    }
+
+    /* Services */
+    .cards{
+      display:grid;
+      grid-template-columns: repeat(12, 1fr);
+      gap: 14px;
+    }
+    .svc{
+      grid-column: span 4;
+      padding: 16px;
+      border-radius: var(--radius);
+      border: 1px solid rgba(255,255,255,.10);
+      background: linear-gradient(180deg, rgba(255,255,255,.05), rgba(255,255,255,.03));
+      box-shadow: 0 12px 40px rgba(0,0,0,.25);
+    }
+    .svc h3{ margin: 10px 0 6px; font-size: 14px; }
+    .svc p{ margin: 0; color: var(--muted); font-size: 13px; line-height: 1.6; }
+    .icon{
+      width: 40px; height: 40px;
+      border-radius: 14px;
+      display:grid; place-items:center;
+      border: 1px solid rgba(255,255,255,.12);
+      background: rgba(255,255,255,.05);
+    }
+
+    /* Testimonials */
+    .quote{
+      grid-column: span 6;
+      padding: 18px;
+      border-radius: var(--radius);
+      border: 1px solid rgba(255,255,255,.10);
+      background: rgba(255,255,255,.04);
+    }
+    .quote p{ margin: 0; color: var(--text); line-height: 1.6; }
+    .quote .who{ margin-top: 10px; color: var(--muted); font-size: 12px; }
+
+    /* Contact */
+    .contact{
+      display:grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 14px;
+      align-items: start;
+    }
+    .panel{
+      padding: 18px;
+      border-radius: var(--radius);
+      border: 1px solid rgba(255,255,255,.10);
+      background: rgba(255,255,255,.04);
+    }
+    .panel h3{ margin: 0 0 8px; font-size: 14px; }
+    .panel p{ margin: 0; color: var(--muted); font-size: 13px; line-height: 1.6; }
+
+    form{ display:grid; gap: 10px; margin-top: 10px; }
+    .field{
+      padding: 12px 12px;
+      border-radius: 14px;
+      border: 1px solid rgba(255,255,255,.12);
+      background: rgba(255,255,255,.05);
+      color: var(--text);
+      font-size: 13px;
+      outline: none;
+    }
+    textarea.field{ min-height: 110px; resize: vertical; }
+
+    footer{
+      padding: 22px 0 34px;
+      color: var(--dim);
+      border-top: 1px solid rgba(255,255,255,.07);
+      background: rgba(0,0,0,.12);
+    }
+    footer .foot{
+      display:flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 10px;
+      flex-wrap: wrap;
+      font-size: 12px;
+    }
+    .fine a{ color: var(--muted); }
+    .fine a:hover{ color: var(--text); }
+
+    /* Floating WhatsApp */
+    .float{
+      position: fixed;
+      right: 18px;
+      bottom: 18px;
+      z-index: 60;
+      display:flex;
+      flex-direction: column;
+      gap: 10px;
+      align-items: flex-end;
+    }
+    .fab{
+      display:inline-flex;
+      align-items:center;
+      gap: 10px;
+      padding: 12px 14px;
+      border-radius: 999px;
+      border: 1px solid rgba(255,255,255,.14);
+      background: rgba(0,0,0,.45);
+      backdrop-filter: blur(10px);
+      box-shadow: var(--shadow);
+      font-size: 13px;
+      font-weight: 700;
+    }
+    .fab small{ font-weight: 600; color: var(--muted); }
+
+    /* Mobile */
+    @media (max-width: 980px){
+      .hero-grid{ grid-template-columns: 1fr; }
+      .car{ grid-column: span 6; }
+      .svc{ grid-column: span 6; }
+      .quote{ grid-column: span 12; }
+      .contact{ grid-template-columns: 1fr; }
+    }
+    @media (max-width: 680px){
+      .nav-links{ display:none; }
+      .burger{ display:inline-grid; place-items:center; }
+      .car{ grid-column: span 12; }
+      .svc{ grid-column: span 12; }
+      .stats{ grid-template-columns: 1fr; }
+      .filters{ justify-content: flex-start; }
+      .input{ min-width: 100%; }
+    }
+
+    /* Mobile Drawer */
+    .drawer{
+      position: fixed;
+      inset: 0;
+      z-index: 80;
+      display:none;
+    }
+    .drawer.open{ display:block; }
+    .drawer .backdrop{
+      position:absolute; inset: 0;
+      background: rgba(0,0,0,.62);
+    }
+    .drawer .sheet{
+      position:absolute;
+      top: 10px; left: 10px; right: 10px;
+      border-radius: 22px;
+      border: 1px solid rgba(255,255,255,.12);
+      background: rgba(10,11,14,.92);
+      backdrop-filter: blur(12px);
+      box-shadow: var(--shadow);
+      overflow:hidden;
+    }
+    .sheet .row{
+      display:flex; align-items:center; justify-content: space-between;
+      padding: 14px;
+      border-bottom: 1px solid rgba(255,255,255,.08);
+    }
+    .sheet nav{ display:grid; gap: 6px; padding: 12px; }
+    .sheet nav a{
+      padding: 12px 12px;
+      border-radius: 14px;
+      color: var(--muted);
+      border: 1px solid rgba(255,255,255,.10);
+      background: rgba(255,255,255,.04);
+    }
+    .sheet nav a:hover{ color: var(--text); background: rgba(255,255,255,.06); }
+
+    /* Smooth anchor scroll */
+    html{ scroll-behavior: smooth; }
+  </style>
+</head>
+
+<body class="grain">
+  <!-- MOBILE DRAWER -->
+  <div class="drawer" id="drawer" aria-hidden="true">
+    <div class="backdrop" onclick="toggleDrawer(false)"></div>
+    <div class="sheet" role="dialog" aria-modal="true" aria-label="Menu">
+      <div class="row">
+        <div class="brand">
+          <div class="logo" aria-hidden="true">
+            <!-- Minimal “ring” icon -->
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none">
+              <path d="M12 20a8 8 0 1 0 0-16 8 8 0 0 0 0 16Z" stroke="rgba(255,255,255,.85)" stroke-width="1.6"/>
+              <path d="M12 7v5l3 2" stroke="rgba(255,255,255,.65)" stroke-width="1.6" stroke-linecap="round"/>
+            </svg>
+          </div>
+          <div class="brand-title">
+            <strong>German Auto Studio</strong>
+            <span>Sales • Specialist Service</span>
+          </div>
+        </div>
+        <button class="btn btn-ghost" onclick="toggleDrawer(false)">Close</button>
+      </div>
+      <nav>
+        <a href="#inventory" onclick="toggleDrawer(false)">Cars for Sale</a>
+        <a href="#services" onclick="toggleDrawer(false)">Services</a>
+        <a href="#reviews" onclick="toggleDrawer(false)">Reviews</a>
+        <a href="#contact" onclick="toggleDrawer(false)">Contact</a>
+      </nav>
+      <div style="padding: 12px;">
+        <a class="btn" style="width:100%;" href="#contact" onclick="toggleDrawer(false)">
+          Book / Enquire
+          <span style="opacity:.7">→</span>
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <!-- HEADER -->
+  <header>
+    <div class="container">
+      <div class="nav">
+        <a class="brand" href="#top" aria-label="Home">
+          <div class="logo" aria-hidden="true">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none">
+              <path d="M4.5 14.5 6 9.5c.2-.7.8-1.2 1.5-1.2h9c.7 0 1.3.5 1.5 1.2l1.5 5" stroke="rgba(255,255,255,.85)" stroke-width="1.6" stroke-linecap="round"/>
+              <path d="M7 14.5h10" stroke="rgba(255,255,255,.65)" stroke-width="1.6" stroke-linecap="round"/>
+              <path d="M7.2 18.2a1.6 1.6 0 1 0 0-3.2 1.6 1.6 0 0 0 0 3.2ZM16.8 18.2a1.6 1.6 0 1 0 0-3.2 1.6 1.6 0 0 0 0 3.2Z" stroke="rgba(255,255,255,.65)" stroke-width="1.6"/>
+            </svg>
+          </div>
+          <div class="brand-title">
+            <strong>German Auto Studio</strong>
+            <span>Sales • Specialist Service</span>
+          </div>
+        </a>
+
+        <nav class="nav-links" aria-label="Primary">
+          <a href="#inventory">Cars for Sale</a>
+          <a href="#services">Services</a>
+          <a href="#reviews">Reviews</a>
+          <a href="#contact">Contact</a>
+        </nav>
+
+        <div class="nav-cta">
+          <a class="btn btn-ghost" href="tel:+440000000000" title="Call">Call</a>
+          <a class="btn" href="#contact" title="Book / Enquire">Book / Enquire</a>
+          <button class="burger" aria-label="Open menu" onclick="toggleDrawer(true)">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none">
+              <path d="M5 7h14M5 12h14M5 17h14" stroke="rgba(255,255,255,.85)" stroke-width="1.6" stroke-linecap="round"/>
+            </svg>
+          </button>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- HERO -->
+  <main id="top" class="hero">
+    <div class="container">
+      <div class="hero-grid">
+        <div>
+          <div class="kicker">
+            <span class="dot" aria-hidden="true"></span>
+            German vehicles • Transparent sales • Specialist-level servicing
+          </div>
+
+          <h1>Black-label care for <span style="color:var(--accent)">German engineering</span>.</h1>
+          <p class="lead">
+            We sell carefully selected German cars and service them with a precision-first approach —
+            diagnostics, repairs, and maintenance done properly. No shortcuts.
+          </p>
+
+          <div class="hero-actions">
+            <a class="btn" href="#inventory">Browse Cars <span style="opacity:.7">→</span></a>
+            <a class="btn btn-ghost" href="#services">See Services</a>
+            <a class="btn btn-ghost" href="#contact">Get a Quote</a>
+          </div>
+
+          <div class="stats" aria-label="Highlights">
+            <div class="stat">
+              <strong>HPI Checked</strong>
+              <span>Clear history & transparency</span>
+            </div>
+            <div class="stat">
+              <strong>Diagnostic-led</strong>
+              <span>Scan + road test + evidence</span>
+            </div>
+            <div class="stat">
+              <strong>German Focus</strong>
+              <span>BMW • Audi • Mercedes • VW</span>
+            </div>
+          </div>
+        </div>
+
+        <aside class="hero-card" aria-label="Quick facts">
+          <div class="top">
+            <strong>What we do</strong>
+            <span class="pill">Sales + Service</span>
+          </div>
+          <div class="body">
+            <div class="mini">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none">
+                <path d="M7 7h10M7 11h7M7 15h10" stroke="rgba(255,255,255,.8)" stroke-width="1.6" stroke-linecap="round"/>
+                <path d="M5 20V4a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2v16" stroke="rgba(255,255,255,.55)" stroke-width="1.6"/>
+              </svg>
+              <div>
+                <strong>Proper prep</strong>
+                <span>Inspection, road test, valeting, paperwork.</span>
+              </div>
+            </div>
+
+            <div class="mini">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none">
+                <path d="M12 2v6" stroke="rgba(255,255,255,.8)" stroke-width="1.6" stroke-linecap="round"/>
+                <path d="M12 16v6" stroke="rgba(255,255,255,.8)" stroke-width="1.6" stroke-linecap="round"/>
+                <path d="M4 12h6" stroke="rgba(255,255,255,.8)" stroke-width="1.6" stroke-linecap="round"/>
+                <path d="M14 12h6" stroke="rgba(255,255,255,.8)" stroke-width="1.6" stroke-linecap="round"/>
+                <path d="M12 16a4 4 0 1 0 0-8 4 4 0 0 0 0 8Z" stroke="rgba(255,255,255,.55)" stroke-width="1.6"/>
+              </svg>
+              <div>
+                <strong>Specialist service</strong>
+                <span>Diagnostics, timing chains, turbos, brakes, DSG.</span>
+              </div>
+            </div>
+
+            <div class="mini">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none">
+                <path d="M20 8v8a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V8" stroke="rgba(255,255,255,.55)" stroke-width="1.6"/>
+                <path d="M7 8a5 5 0 0 1 10 0" stroke="rgba(255,255,255,.8)" stroke-width="1.6" stroke-linecap="round"/>
+              </svg>
+              <div>
+                <strong>Warranty-friendly</strong>
+                <span>Clear invoices and documented work.</span>
+              </div>
+            </div>
+
+            <a class="btn" href="#contact" style="width:100%;">
+              Book a slot / Ask a question <span style="opacity:.7">→</span>
+            </a>
+          </div>
+        </aside>
+      </div>
+    </div>
+  </main>
+
+  <!-- INVENTORY -->
+  <section id="inventory" class="section">
+    <div class="container">
+      <div class="section-head">
+        <div>
+          <h2>Cars for sale</h2>
+          <p class="sub">Replace placeholders with your real stock. Add more cards as needed.</p>
+        </div>
+
+        <div class="filters">
+          <div class="input" title="Search stock">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+              <path d="M21 21l-4.2-4.2" stroke="rgba(255,255,255,.7)" stroke-width="1.6" stroke-linecap="round"/>
+              <path d="M11 19a8 8 0 1 1 0-16 8 8 0 0 1 0 16Z" stroke="rgba(255,255,255,.55)" stroke-width="1.6"/>
+            </svg>
+            <input id="search" placeholder="Search: model, fuel, gearbox..." autocomplete="off" />
+          </div>
+
+          <div class="chip-row" aria-label="Filters">
+            <div class="chip active" data-filter="all" onclick="setFilter('all', this)">All</div>
+            <div class="chip" data-filter="bmw" onclick="setFilter('bmw', this)">BMW</div>
+            <div class="chip" data-filter="audi" onclick="setFilter('audi', this)">Audi</div>
+            <div class="chip" data-filter="merc" onclick="setFilter('merc', this)">Mercedes</div>
+            <div class="chip" data-filter="vw" onclick="setFilter('vw', this)">VW</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="grid" id="carGrid">
+        <!-- CARD 1 -->
+        <article class="car" data-tags="bmw diesel automatic 2016" data-title="BMW 320d M Sport 2016">
+          <div class="car-media" aria-label="Car photo placeholder">
+            <div class="badge">Fresh Stock</div>
+            <div class="price">£9,995</div>
+          </div>
+          <div class="car-body">
+            <div class="car-title">
+              <strong>BMW 320d M Sport</strong>
+              <span>2016</span>
+            </div>
+            <div class="specs">
+              <span class="spec">Diesel</span>
+              <span class="spec">Auto</span>
+              <span class="spec">78k miles</span>
+              <span class="spec">FSH</span>
+            </div>
+            <div class="car-actions">
+              <a class="btn btn-sm" href="#contact">Enquire</a>
+              <a class="btn btn-ghost btn-sm" href="#">View Details</a>
+            </div>
+          </div>
+        </article>
+
+        <!-- CARD 2 -->
+        <article class="car" data-tags="audi petrol manual 2015" data-title="Audi A3 S Line 2015">
+          <div class="car-media">
+            <div class="badge">HPI Clear</div>
+            <div class="price">£8,450</div>
+          </div>
+          <div class="car-body">
+            <div class="car-title">
+              <strong>Audi A3 S Line</strong>
+              <span>2015</span>
+            </div>
+            <div class="specs">
+              <span class="spec">Petrol</span>
+              <span class="spec">Manual</span>
+              <span class="spec">71k miles</span>
+              <span class="spec">2 keys</span>
+            </div>
+            <div class="car-actions">
+              <a class="btn btn-sm" href="#contact">Enquire</a>
+              <a class="btn btn-ghost btn-sm" href="#">View Details</a>
+            </div>
+          </div>
+        </article>
+
+        <!-- CARD 3 -->
+        <article class="car" data-tags="merc diesel automatic 2014" data-title="Mercedes C220d AMG Line 2014">
+          <div class="car-media">
+            <div class="badge">Serviced</div>
+            <div class="price">£7,995</div>
+          </div>
+          <div class="car-body">
+            <div class="car-title">
+              <strong>Mercedes C220d AMG Line</strong>
+              <span>2014</span>
+            </div>
+            <div class="specs">
+              <span class="spec">Diesel</span>
+              <span class="spec">Auto</span>
+              <span class="spec">92k miles</span>
+              <span class="spec">MOT</span>
+            </div>
+            <div class="car-actions">
+              <a class="btn btn-sm" href="#contact">Enquire</a>
+              <a class="btn btn-ghost btn-sm" href="#">View Details</a>
+            </div>
+          </div>
+        </article>
+
+        <!-- CARD 4 -->
+        <article class="car" data-tags="vw petrol automatic 2017" data-title="VW Golf GTI 2017">
+          <div class="car-media">
+            <div class="badge">Performance</div>
+            <div class="price">£15,750</div>
+          </div>
+          <div class="car-body">
+            <div class="car-title">
+              <strong>VW Golf GTI</strong>
+              <span>2017</span>
+            </div>
+            <div class="specs">
+              <span class="spec">Petrol</span>
+              <span class="spec">DSG</span>
+              <span class="spec">55k miles</span>
+              <span class="spec">Nav</span>
+            </div>
+            <div class="car-actions">
+              <a class="btn btn-sm" href="#contact">Enquire</a>
+              <a class="btn btn-ghost btn-sm" href="#">View Details</a>
+            </div>
+          </div>
+        </article>
+
+        <!-- CARD 5 -->
+        <article class="car" data-tags="bmw petrol automatic 2018" data-title="BMW X1 xDrive 2018">
+          <div class="car-media">
+            <div class="badge">SUV</div>
+            <div class="price">£16,995</div>
+          </div>
+          <div class="car-body">
+            <div class="car-title">
+              <strong>BMW X1 xDrive</strong>
+              <span>2018</span>
+            </div>
+            <div class="specs">
+              <span class="spec">Petrol</span>
+              <span class="spec">Auto</span>
+              <span class="spec">49k miles</span>
+              <span class="spec">Camera</span>
+            </div>
+            <div class="car-actions">
+              <a class="btn btn-sm" href="#contact">Enquire</a>
+              <a class="btn btn-ghost btn-sm" href="#">View Details</a>
+            </div>
+          </div>
+        </article>
+
+        <!-- CARD 6 -->
+        <article class="car" data-tags="audi diesel automatic 2016" data-title="Audi A4 S Line 2016">
+          <div class="car-media">
+            <div class="badge">Estate</div>
+            <div class="price">£10,900</div>
+          </div>
+          <div class="car-body">
+            <div class="car-title">
+              <strong>Audi A4 S Line</strong>
+              <span>2016</span>
+            </div>
+            <div class="specs">
+              <span class="spec">Diesel</span>
+              <span class="spec">Auto</span>
+              <span class="spec">80k miles</span>
+              <span class="spec">Cruise</span>
+            </div>
+            <div class="car-actions">
+              <a class="btn btn-sm" href="#contact">Enquire</a>
+              <a class="btn btn-ghost btn-sm" href="#">View Details</a>
+            </div>
+          </div>
+        </article>
+      </div>
+
+      <div style="margin-top: 14px; color: var(--muted); font-size: 12px;">
+        Tip: Replace the grey image header with your car photos. You can set <code style="color:var(--text)">.car-media</code> to a background-image or add an <code style="color:var(--text)">&lt;img&gt;</code>.
+      </div>
+    </div>
+  </section>
+
+  <!-- SERVICES -->
+  <section id="services" class="section">
+    <div class="container">
+      <div class="section-head">
+        <div>
+          <h2>Specialist services</h2>
+          <p class="sub">Focused on German platforms: diagnostics, maintenance, and complex mechanical work.</p>
+        </div>
+      </div>
+
+      <div class="cards">
+        <div class="svc">
+          <div class="icon" aria-hidden="true">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none">
+              <path d="M12 2v2" stroke="rgba(255,255,255,.8)" stroke-width="1.6" stroke-linecap="round"/>
+              <path d="M12 20v2" stroke="rgba(255,255,255,.8)" stroke-width="1.6" stroke-linecap="round"/>
+              <path d="M4.9 4.9l1.4 1.4" stroke="rgba(255,255,255,.65)" stroke-width="1.6" stroke-linecap="round"/>
+              <path d="M17.7 17.7l1.4 1.4" stroke="rgba(255,255,255,.65)" stroke-width="1.6" stroke-linecap="round"/>
+              <path d="M2 12h2" stroke="rgba(255,255,255,.8)" stroke-width="1.6" stroke-linecap="round"/>
+              <path d="M20 12h2" stroke="rgba(255,255,255,.8)" stroke-width="1.6" stroke-linecap="round"/>
+              <path d="M4.9 19.1l1.4-1.4" stroke="rgba(255,255,255,.65)" stroke-width="1.6" stroke-linecap="round"/>
+              <path d="M17.7 6.3l1.4-1.4" stroke="rgba(255,255,255,.65)" stroke-width="1.6" stroke-linecap="round"/>
+              <path d="M12 17a5 5 0 1 0 0-10 5 5 0 0 0 0 10Z" stroke="rgba(255,255,255,.55)" stroke-width="1.6"/>
+            </svg>
+          </div>
+          <h3>Advanced diagnostics</h3>
+          <p>Fault finding with scan data, live values, smoke tests, and road test evidence.</p>
+        </div>
+
+        <div class="svc">
+          <div class="icon" aria-hidden="true">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none">
+              <path d="M7 7h10M7 12h10M7 17h10" stroke="rgba(255,255,255,.75)" stroke-width="1.6" stroke-linecap="round"/>
+              <path d="M4 6a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6Z" stroke="rgba(255,255,255,.55)" stroke-width="1.6"/>
+            </svg>
+          </div>
+          <h3>Servicing & maintenance</h3>
+          <p>Oil, filters, plugs, brakes, suspension — with quality parts and proper torque specs.</p>
+        </div>
+
+        <div class="svc">
+          <div class="icon" aria-hidden="true">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none">
+              <path d="M7 14l3-3 3 3 4-4" stroke="rgba(255,255,255,.8)" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+              <path d="M5 5h14v14H5V5Z" stroke="rgba(255,255,255,.55)" stroke-width="1.6"/>
+            </svg>
+          </div>
+          <h3>Timing chains & engine work</h3>
+          <p>Chain inspection/replacement, leaks, misfires, and mechanical restoration.</p>
+        </div>
+
+        <div class="svc">
+          <div class="icon" aria-hidden="true">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none">
+              <path d="M6 15c2-3 4-4 6-4s4 1 6 4" stroke="rgba(255,255,255,.75)" stroke-width="1.6" stroke-linecap="round"/>
+              <path d="M12 3v4" stroke="rgba(255,255,255,.8)" stroke-width="1.6" stroke-linecap="round"/>
+              <path d="M4 15a8 8 0 1 1 16 0" stroke="rgba(255,255,255,.55)" stroke-width="1.6"/>
+            </svg>
+          </div>
+          <h3>Turbo & intake systems</h3>
+          <p>Boost leaks, EGR/intake cleaning, actuator checks, and smoke-tested charge pipes.</p>
+        </div>
+
+        <div class="svc">
+          <div class="icon" aria-hidden="true">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none">
+              <path d="M7 10h10" stroke="rgba(255,255,255,.8)" stroke-width="1.6" stroke-linecap="round"/>
+              <path d="M7 14h6" stroke="rgba(255,255,255,.8)" stroke-width="1.6" stroke-linecap="round"/>
+              <path d="M5 6h14v12H5V6Z" stroke="rgba(255,255,255,.55)" stroke-width="1.6"/>
+            </svg>
+          </div>
+          <h3>DSG / automatic servicing</h3>
+          <p>Fluid + filter service, adaptation checks, and drivability diagnostics.</p>
+        </div>
+
+        <div class="svc">
+          <div class="icon" aria-hidden="true">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none">
+              <path d="M9 12h6" stroke="rgba(255,255,255,.8)" stroke-width="1.6" stroke-linecap="round"/>
+              <path d="M12 9v6" stroke="rgba(255,255,255,.8)" stroke-width="1.6" stroke-linecap="round"/>
+              <path d="M6 3h12v18H6V3Z" stroke="rgba(255,255,255,.55)" stroke-width="1.6"/>
+            </svg>
+          </div>
+          <h3>Pre-purchase inspections</h3>
+          <p>Scan, road test, underbody checks, and a clear report before you buy.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- REVIEWS -->
+  <section id="reviews" class="section">
+    <div class="container">
+      <div class="section-head">
+        <div>
+          <h2>Customer feedback</h2>
+          <p class="sub">Replace with real reviews from Google/Facebook once you have them.</p>
+        </div>
+      </div>
+
+      <div class="grid">
+        <div class="quote">
+          <p>“Honest diagnosis and fixed the issue properly — no upsell, just facts. Car drives perfect now.”</p>
+          <div class="who">— Customer, BMW 3 Series</div>
+        </div>
+        <div class="quote">
+          <p>“Bought a car here and the prep was spot on. Clean paperwork, clean car, smooth handover.”</p>
+          <div class="who">— Customer, Audi A4</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section id="contact" class="section">
+    <div class="container">
+      <div class="section-head">
+        <div>
+          <h2>Contact & bookings</h2>
+          <p class="sub">Swap the placeholders with your phone, WhatsApp, address, and opening hours.</p>
+        </div>
+      </div>
+
+      <div class="contact">
+        <div class="panel">
+          <h3>Garage details</h3>
+          <p>
+            <strong style="color:var(--text)">German Auto Studio</strong><br />
+            Your Address Line 1, Your Town, UK<br />
+            <span style="color:var(--muted)">Mon–Sat: 9:00–18:00</span>
+          </p>
+
+          <div style="height: 12px;"></div>
+
+          <p>
+            <strong style="color:var(--text)">Phone:</strong> <a href="tel:+440000000000">+44 0000 000000</a><br />
+            <strong style="color:var(--text)">WhatsApp:</strong> <a href="https://wa.me/440000000000" target="_blank" rel="noreferrer">Message us</a><br />
+            <strong style="color:var(--text)">Email:</strong> <a href="mailto:hello@yourdomain.co.uk">hello@yourdomain.co.uk</a>
+          </p>
+
+          <div style="height: 12px;"></div>
+
+          <p style="color: var(--muted); font-size: 12px;">
+            Add your Google Maps embed here if you want (optional).
+          </p>
+        </div>
+
+        <div class="panel">
+          <h3>Quick enquiry</h3>
+          <p>Send a message and we’ll reply with availability and a quote estimate.</p>
+
+          <!-- Basic form (front-end only). For real email sending, connect to Formspree/Netlify Forms. -->
+          <form onsubmit="return fakeSubmit(event)">
+            <input class="field" name="name" placeholder="Your name" required />
+            <input class="field" name="phone" placeholder="Phone / WhatsApp" required />
+            <input class="field" name="vehicle" placeholder="Vehicle (e.g., 2015 Audi A3 1.6 TDI)" />
+            <textarea class="field" name="message" placeholder="What do you need? (service, repair, car enquiry)" required></textarea>
+            <button class="btn" type="submit">Send enquiry <span style="opacity:.7">→</span></button>
+            <div id="formNote" style="color:var(--muted); font-size:12px;"></div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="container">
+      <div class="foot">
+        <div>© <span id="year"></span> German Auto Studio. All rights reserved.</div>
+        <div class="fine">
+          <a href="#">Privacy</a> · <a href="#">Terms</a> · <a href="#">Cookies</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- FLOATING CTA -->
+  <div class="float">
+    <a class="fab" href="https://wa.me/440000000000" target="_blank" rel="noreferrer" title="WhatsApp">
+      <span aria-hidden="true">💬</span>
+      WhatsApp <small>fast reply</small>
+    </a>
+    <a class="fab" href="tel:+440000000000" title="Call">
+      <span aria-hidden="true">📞</span>
+      Call <small>book now</small>
+    </a>
+  </div>
+
+  <script>
+    // ======= Mobile drawer =======
+    function toggleDrawer(open){
+      const d = document.getElementById('drawer');
+      d.classList.toggle('open', !!open);
+      d.setAttribute('aria-hidden', open ? 'false' : 'true');
+    }
+
+    // ======= Inventory filter + search =======
+    let currentFilter = 'all';
+
+    function setFilter(tag, el){
+      currentFilter = tag;
+      document.querySelectorAll('.chip').forEach(c => c.classList.remove('active'));
+      el.classList.add('active');
+      applyFilters();
+    }
+
+    function applyFilters(){
+      const q = (document.getElementById('search').value || '').trim().toLowerCase();
+      document.querySelectorAll('#carGrid .car').forEach(card => {
+        const tags = (card.getAttribute('data-tags') || '').toLowerCase();
+        const title = (card.getAttribute('data-title') || '').toLowerCase();
+        const matchesTag = currentFilter === 'all' ? true : tags.includes(currentFilter);
+        const matchesQuery = !q ? true : (title.includes(q) || tags.includes(q));
+        card.style.display = (matchesTag && matchesQuery) ? '' : 'none';
+      });
+    }
+
+    document.getElementById('search').addEventListener('input', applyFilters);
+
+    // ======= Fake form submit (replace with real endpoint) =======
+    function fakeSubmit(e){
+      e.preventDefault();
+      const note = document.getElementById('formNote');
+      note.textContent = "Form demo: connect this form to Formspree / Netlify Forms to receive emails.";
+      return false;
+    }
+
+    // ======= Year =======
+    document.getElementById('year').textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
